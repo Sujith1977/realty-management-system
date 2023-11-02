@@ -39,6 +39,7 @@ public class Address {
 	// Constructors, getters, setters, and toString method
 
 	public Address() {
+		// default constructor
 		super();
 	}
 

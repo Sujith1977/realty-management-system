@@ -1,5 +1,6 @@
 package com.realtycare.realtymanagementsystem.model;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -53,46 +54,46 @@ public class Property {
     private Customer customer;
 
     @OneToMany(mappedBy = "property", cascade = CascadeType.ALL)
-    private List<Report> reports;
+    private Set<Report> reports = new HashSet<>();
 
     @OneToMany(mappedBy = "property", cascade = CascadeType.ALL)
-    private List<Agreement> agreements;
+    private Set<Agreement> agreements = new HashSet<>();
 
     @OneToMany(mappedBy = "property", cascade = CascadeType.ALL)
-    private List<Document> documents;
+    private Set<Document> documents = new HashSet<>();
 
     @OneToMany(mappedBy = "property", cascade = CascadeType.ALL)
-    private List<Bill> bills;
+    private Set<Bill> bills = new HashSet<>();
 
     @ManyToMany
     @JoinTable(name = "propertyVendor",
             joinColumns = @JoinColumn(name = "propertyId"),
             inverseJoinColumns = @JoinColumn(name = "vendorId"))
-    private Set<Vendor> vendors;
+    private Set<Vendor> vendors = new HashSet<>();
 
     @ManyToMany
     @JoinTable(name = "propertyTenant",
             joinColumns = @JoinColumn(name = "propertyIid"),
             inverseJoinColumns = @JoinColumn(name = "tenantId"))
-    private Set<Tenant> tenants;
+    private Set<Tenant> tenants = new HashSet<>();
 
     @ManyToMany
     @JoinTable(name = "propertySchedule",
             joinColumns = @JoinColumn(name = "propertyId"),
             inverseJoinColumns = @JoinColumn(name = "scheduleId"))
-    private Set<Schedule> schedules;
+    private Set<Schedule> schedules = new HashSet<>();
 
     @ManyToMany
     @JoinTable(name = "propertyService",
             joinColumns = @JoinColumn(name = "propertyId"),
             inverseJoinColumns = @JoinColumn(name = "serviceId"))
-    private Set<Service> services;
+    private Set<Service> services = new HashSet<>();
 
     @ManyToMany
     @JoinTable(name = "propertyAmenity",
             joinColumns = @JoinColumn(name = "propertyId"),
             inverseJoinColumns = @JoinColumn(name = "amenityId"))
-    private Set<Amenity> amenities;
+    private Set<Amenity> amenities = new HashSet<>();
 
     // Constructors, getters, setters, and toString method
     
@@ -199,35 +200,35 @@ public class Property {
 		this.customer = customer;
 	}
 
-	public List<Report> getReports() {
+	public Set<Report> getReports() {
 		return reports;
 	}
 
-	public void setReports(List<Report> reports) {
+	public void setReports(Set<Report> reports) {
 		this.reports = reports;
 	}
 
-	public List<Agreement> getAgreements() {
+	public Set<Agreement> getAgreements() {
 		return agreements;
 	}
 
-	public void setAgreements(List<Agreement> agreements) {
+	public void setAgreements(Set<Agreement> agreements) {
 		this.agreements = agreements;
 	}
 
-	public List<Document> getDocuments() {
+	public Set<Document> getDocuments() {
 		return documents;
 	}
 
-	public void setDocuments(List<Document> documents) {
+	public void setDocuments(Set<Document> documents) {
 		this.documents = documents;
 	}
 
-	public List<Bill> getBills() {
+	public Set<Bill> getBills() {
 		return bills;
 	}
 
-	public void setBills(List<Bill> bills) {
+	public void setBills(Set<Bill> bills) {
 		this.bills = bills;
 	}
 
