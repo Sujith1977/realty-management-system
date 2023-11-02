@@ -32,8 +32,8 @@ public class Customer {
 	private LocalDateTime customerCreatedTime;
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "addressId")
-	private Address address;
-	
+	private Address propertyAddress;
+		
 	@OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)	
 	private Set<Property> properties = new HashSet<>();
 	
@@ -73,9 +73,12 @@ public class Customer {
         inverseJoinColumns = @JoinColumn(name = "serviceId")
     )
     private Set<Service> services = new HashSet<>();
+
+    // Constructors, getters, setters, and toString method
     
     public Customer(){
     	//default constructor
+    	super();
     }
     
     public Customer(String customerName, String customerEmail, String customerPhoneNumber, LocalDateTime customerCreatedTime, Address address) {
@@ -83,7 +86,7 @@ public class Customer {
         this.customerEmail = customerEmail;
         this.customerPhoneNumber = customerPhoneNumber;
         this.customerCreatedTime = customerCreatedTime;
-        this.address = address;
+        this.propertyAddress = address;
     }
     
     public Long getCustomerId() {
@@ -119,11 +122,11 @@ public class Customer {
     }
 
     public Address getAddress() {
-        return address;
+        return propertyAddress;
     }
 
     public void setAddress(Address address) {
-        this.address = address;
+        this.propertyAddress = address;
     }
 
     public Set<Property> getProperties() {
@@ -214,7 +217,7 @@ public class Customer {
                 ", customerEmail='" + customerEmail + '\'' +
                 ", customerPhoneNumber='" + customerPhoneNumber + '\'' +
                 ", customerCreatedTime=" + customerCreatedTime +
-                ", address=" + address +
+                ", address=" + propertyAddress +
                 '}';
     }
 
